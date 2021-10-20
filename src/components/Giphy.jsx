@@ -42,7 +42,24 @@ const Giphy = () => {
       );
     });
   };
-  return <div>{renderGifs()}</div>;
+  const renderError = () => {
+    if (isError) {
+      return (
+        <div
+          className="alert alert-warning alert-dismissible fade show"
+          role="alert"
+        >
+          Unable to get Gifs, please try again in a few minutes
+        </div>
+      );
+    }
+  };
+  return (
+    <div className="m-2">
+      {renderError()}
+      <div className="container gifs">{renderGifs()}</div>
+    </div>
+  );
 };
 
 export default Giphy;
