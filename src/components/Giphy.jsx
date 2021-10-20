@@ -22,7 +22,7 @@ const Giphy = () => {
         setData(results.data.data);
       } catch (err) {
         setIsError(true);
-        console.log(err);
+        setTimeout(() => setIsError(false), 4000);
       }
 
       setIsLoading(false);
@@ -46,10 +46,11 @@ const Giphy = () => {
     if (isError) {
       return (
         <div
-          className="alert alert-warning alert-dismissible fade show"
+          className="alert alert-danger alert-dismissible fade show"
           role="alert"
         >
           Unable to get Gifs, please try again in a few minutes
+          <button className="close"></button>
         </div>
       );
     }
