@@ -16,6 +16,7 @@ const Giphy = () => {
       });
       console.log(results);
       setData(results.data.data);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
