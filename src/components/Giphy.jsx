@@ -15,7 +15,17 @@ const Giphy = () => {
     };
     fetchData();
   }, []);
-  return <div>Giphy</div>;
+
+  const renderGifs = () => {
+    return data.map((el) => {
+      return (
+        <div>
+          <img src={el.images.fixed_height.url} alt="" />
+        </div>
+      );
+    });
+  };
+  return <div>{renderGifs()}</div>;
 };
 
 export default Giphy;
