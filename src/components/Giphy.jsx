@@ -19,7 +19,7 @@ const Giphy = () => {
   const renderGifs = () => {
     return data.map((el) => {
       return (
-        <div>
+        <div key={el.id} className="gifs">
           <img src={el.images.fixed_height.url} alt="" />
         </div>
       );
