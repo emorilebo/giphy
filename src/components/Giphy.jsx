@@ -72,7 +72,10 @@ const Giphy = () => {
         },
       });
       setData(results.data.data);
-    } catch (err) {}
+    } catch (err) {
+      setIsError(true);
+      setTimeout(() => setIsError(false), 4000);
+    }
 
     setIsLoading(false);
   };
