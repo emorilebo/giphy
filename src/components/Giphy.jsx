@@ -63,13 +63,17 @@ const Giphy = () => {
     e.preventDefault();
     setIsError(false);
     setIsLoading(true);
-    const results = await axios("https://api.giphy.com/v1/gifs/search", {
-      params: {
-        api_key: "z1SvCQFyE00BezeOovuh2exg7afvchI7",
-        q: search,
-      },
-    });
-    setData(results.data.data);
+    try {
+      const results = await axios("https://api.giphy.com/v1/gifs/search", {
+        params: {
+          api_key: "z1SvCQFyE00BezeOovuh2exg7afvchI7",
+          q: search,
+          limit: 1000,
+        },
+      });
+      setData(results.data.data);
+    } catch (err) {}
+
     setIsLoading(false);
   };
   return (
