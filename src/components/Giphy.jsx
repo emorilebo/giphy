@@ -9,7 +9,7 @@ const Giphy = () => {
   const [isError, setIsError] = useState(false);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(25);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
   const indexOfLastIndex = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastIndex - itemsPerPage;
 
