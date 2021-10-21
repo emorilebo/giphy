@@ -50,7 +50,6 @@ const Giphy = () => {
           role="alert"
         >
           Unable to get Gifs, please try again in a few minutes
-          <button className="close"></button>
         </div>
       );
     }
@@ -58,6 +57,15 @@ const Giphy = () => {
   return (
     <div className="m-2">
       {renderError()}
+      <form action="" className="form-inline justify-content-center m-2">
+        <input
+          type="text"
+          placeholder="Search"
+          className="form-control"
+          //   onChange={searchChange}
+          //   value={search}
+        ></input>
+      </form>
       <div className="container gifs">{renderGifs()}</div>
     </div>
   );
