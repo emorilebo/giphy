@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "./Loader";
+import Paginate from "./Paginate";
 
 const Giphy = () => {
   const [data, setData] = useState([]);
@@ -10,6 +11,7 @@ const Giphy = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(25);
   const indexOfLastIndex = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastIndex - itemsPerPage;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -102,6 +104,7 @@ const Giphy = () => {
           Go
         </button>
       </form>
+      <Paginate />
       <div className="container gifs">{renderGifs()}</div>
     </div>
   );
