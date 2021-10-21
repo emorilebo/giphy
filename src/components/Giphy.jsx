@@ -6,6 +6,7 @@ const Giphy = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,6 +55,10 @@ const Giphy = () => {
       );
     }
   };
+
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
   return (
     <div className="m-2">
       {renderError()}
@@ -62,9 +67,12 @@ const Giphy = () => {
           type="text"
           placeholder="Search"
           className="form-control"
-          //   onChange={searchChange}
-          //   value={search}
-        ></input>
+          onChange={handleSearchChange}
+          value={search}
+        />
+        <button type="submit" className="btn btn-primary mx-2">
+          Go
+        </button>
       </form>
       <div className="container gifs">{renderGifs()}</div>
     </div>
