@@ -69,6 +69,8 @@ const Giphy = () => {
         q: search,
       },
     });
+    setData(results.data.data);
+    setIsLoading(false);
   };
   return (
     <div className="m-2">
