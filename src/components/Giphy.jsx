@@ -59,6 +59,14 @@ const Giphy = () => {
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
   };
+  const handleSubmit = async (e) => {
+    const results = await axios("https://api.giphy.com/v1/gifs/search", {
+      params: {
+        api_key: "z1SvCQFyE00BezeOovuh2exg7afvchI7",
+        q: search,
+      },
+    });
+  };
   return (
     <div className="m-2">
       {renderError()}
@@ -70,7 +78,11 @@ const Giphy = () => {
           onChange={handleSearchChange}
           value={search}
         />
-        <button type="submit" className="btn btn-primary mx-2">
+        <button
+          onClick={handleSubmit}
+          type="submit"
+          className="btn btn-primary mx-2"
+        >
           Go
         </button>
       </form>
