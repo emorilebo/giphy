@@ -60,6 +60,9 @@ const Giphy = () => {
     setSearch(e.target.value);
   };
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsError(false);
+    setIsLoading(true);
     const results = await axios("https://api.giphy.com/v1/gifs/search", {
       params: {
         api_key: "z1SvCQFyE00BezeOovuh2exg7afvchI7",
