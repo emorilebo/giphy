@@ -1,12 +1,26 @@
 import React from "react";
 
 const Paginate = (props) => {
-  const pageNumber = [];
+  const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(props.totalItems / props.itemsPerPage); i++) {
-    pageNumber.push(i);
+    pageNumbers.push(i);
   }
-  console.log(pageNumber);
-  return <div className="">Paginate</div>;
+  console.log(pageNumbers);
+  return (
+    <nav className="">
+      <ul className="pagination pagination-sm justify-content-end border-0">
+        {pageNumbers.map((number) => {
+          return (
+            <li className="page-item">
+              <a href="#" className="page-link">
+                {number}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  );
 };
 
 export default Paginate;
