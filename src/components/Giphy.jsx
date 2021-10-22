@@ -9,7 +9,7 @@ const Giphy = () => {
   const [isError, setIsError] = useState(false);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(25);
   const indexOfLastIndex = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastIndex - itemsPerPage;
 
@@ -85,6 +85,10 @@ const Giphy = () => {
 
     setIsLoading(false);
   };
+
+  const pageSelected = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
   return (
     <div className="m-2">
       {renderError()}
@@ -105,6 +109,7 @@ const Giphy = () => {
         </button>
       </form>
       <Paginate
+        pageSelected={pageSelected}
         currentPage={currentPage}
         itemsPerPage={itemsPerPage}
         totalItems={data.length}
