@@ -12,6 +12,7 @@ const Giphy = () => {
   const [itemsPerPage, setItemsPerPage] = useState(25);
   const indexOfLastIndex = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastIndex - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastIndex);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +23,7 @@ const Giphy = () => {
         const results = await axios("https://api.giphy.com/v1/gifs/trending", {
           params: {
             api_key: "z1SvCQFyE00BezeOovuh2exg7afvchI7",
-            limit: 100,
+            limit: 1000,
           },
         });
         console.log(results);
@@ -41,7 +42,7 @@ const Giphy = () => {
     if (isLoading) {
       return <Loader />;
     }
-    return data.map((el) => {
+    return currentItems.map((el) => {
       return (
         <div key={el.id} className="gifs">
           <img src={el.images.fixed_height.url} alt="" />
@@ -74,7 +75,7 @@ const Giphy = () => {
         params: {
           api_key: "z1SvCQFyE00BezeOovuh2exg7afvchI7",
           q: search,
-          limit: 100,
+          limit: 1000,
         },
       });
       setData(results.data.data);
